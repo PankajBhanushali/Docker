@@ -1,0 +1,96 @@
+version: '3.9'
+
+services:
+  # Web API Service
+  web-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.WebAPI
+    container_name: day5-web-api
+    ports:
+      - "5030:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DATABASE_CONNECTION_STRING=Server=postgres;Port=5432;Database=training;User Id=postgres;Password=Training@123;
+      - REDIS_CONNECTION_STRING=redis:6379
+      - SERVICE_NAME=web-api
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - training-network
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # PostgreSQL Database Service
+  postgres:
+    image: postgres:16-alpine
+    container_name: day5-postgres
+    environment:
+      - POSTGRES_DB=training
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Training@123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - training-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache Service
+  redis:
+    image: redis:7-alpine
+    container_name: day5-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - training-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: day5-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+    depends_on:
+      - web-api
+    networks:
+      - training-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+
+networks:
+  training-network:
+    driver: bridge

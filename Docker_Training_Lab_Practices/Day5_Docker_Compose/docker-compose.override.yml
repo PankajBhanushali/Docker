@@ -1,0 +1,48 @@
+# Development overrides for Docker Compose
+version: '3.9'
+
+# Override services for development
+services:
+  web-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.WebAPI
+      target: development
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+    ports:
+      - "5030:8080"
+      - "9229:9229"  # Debug port for remote debugging
+    command: >
+      sh -c "dotnet watch run --project Day5_WebAPI.csproj 
+             --verbosity minimal"
+
+  postgres:
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_INITDB_ARGS=--encoding=UTF8
+
+  redis:
+    ports:
+      - "6379:6379"
+    command: redis-server --loglevel debug --appendonly yes
+
+  # Add a pgAdmin for database management in dev
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: day5-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@training.local
+      - PGADMIN_DEFAULT_PASSWORD=Admin@123
+    ports:
+      - "5050:80"
+    networks:
+      - training-network
+    depends_on:
+      - postgres
+    restart: unless-stopped

@@ -1,0 +1,48 @@
+# Multi-stage build for optimization
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy project file
+COPY ["Day2_Docker_Images.csproj", "."]
+
+# Restore with cache optimization
+RUN dotnet restore "Day2_Docker_Images.csproj"
+
+# Copy source code
+COPY . .
+
+# Build in Release mode
+RUN dotnet build "Day2_Docker_Images.csproj" -c Release -o /app/build
+
+# Publish stage
+FROM build AS publish
+RUN dotnet publish "Day2_Docker_Images.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Runtime stage - use Alpine for minimal size
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS final
+WORKDIR /app
+
+# Install curl for health checks
+RUN apk add --no-cache curl
+
+# Copy published application
+COPY --from=publish /app/publish .
+
+# Metadata labels
+LABEL maintainer="Docker Training Team"
+LABEL version="2.0.0"
+LABEL description="Docker Images Training - Day 2"
+
+# Non-root user for security
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+
+EXPOSE 8080
+ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8080/api/image-info || exit 1
+
+ENTRYPOINT ["dotnet", "Day2_Docker_Images.dll"]

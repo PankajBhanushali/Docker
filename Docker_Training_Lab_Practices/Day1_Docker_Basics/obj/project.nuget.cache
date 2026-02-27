@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "dgSpecHash": "MeZ9XXOMhUc=",
+  "success": true,
+  "projectFilePath": "c:\\Users\\crf8625\\OneDrive - Siemens Healthineers\\Documents\\Work\\Learning\\Docker\\Docker_Training_Lab_Practices\\Day1_Docker_Basics\\Day1_Docker_Basics.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\crf8625\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.0\\microsoft.aspnetcore.openapi.8.0.0.nupkg.sha512",
+    "C:\\Users\\crf8625\\.nuget\\packages\\microsoft.extensions.apidescription.server\\8.0.0\\microsoft.extensions.apidescription.server.8.0.0.nupkg.sha512",
+    "C:\\Users\\crf8625\\.nuget\\packages\\microsoft.openapi\\2.4.1\\microsoft.openapi.2.4.1.nupkg.sha512",
+    "C:\\Users\\crf8625\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.4\\swashbuckle.aspnetcore.10.1.4.nupkg.sha512",
+    "C:\\Users\\crf8625\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.4\\swashbuckle.aspnetcore.swagger.10.1.4.nupkg.sha512",
+    "C:\\Users\\crf8625\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.4\\swashbuckle.aspnetcore.swaggergen.10.1.4.nupkg.sha512",
+    "C:\\Users\\crf8625\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.4\\swashbuckle.aspnetcore.swaggerui.10.1.4.nupkg.sha512",
+    "C:\\Users\\crf8625\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://pkgs.dev.azure.com/VarianCloud/_packaging/SharedFramework/nuget/v3/index.json.",
+      "projectPath": "c:\\Users\\crf8625\\OneDrive - Siemens Healthineers\\Documents\\Work\\Learning\\Docker\\Docker_Training_Lab_Practices\\Day1_Docker_Basics\\Day1_Docker_Basics.csproj",
+      "warningLevel": 1,
+      "filePath": "c:\\Users\\crf8625\\OneDrive - Siemens Healthineers\\Documents\\Work\\Learning\\Docker\\Docker_Training_Lab_Practices\\Day1_Docker_Basics\\Day1_Docker_Basics.csproj",
+      "targetGraphs": []
+    },
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://pkgs.dev.azure.com/VarianCloud/CorePlatform/_packaging/messaging_st/nuget/v3/index.json.",
+      "projectPath": "c:\\Users\\crf8625\\OneDrive - Siemens Healthineers\\Documents\\Work\\Learning\\Docker\\Docker_Training_Lab_Practices\\Day1_Docker_Basics\\Day1_Docker_Basics.csproj",
+      "warningLevel": 1,
+      "filePath": "c:\\Users\\crf8625\\OneDrive - Siemens Healthineers\\Documents\\Work\\Learning\\Docker\\Docker_Training_Lab_Practices\\Day1_Docker_Basics\\Day1_Docker_Basics.csproj",
+      "targetGraphs": []
+    }
+  ]
+}
