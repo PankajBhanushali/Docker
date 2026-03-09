@@ -36,7 +36,6 @@ app.MapControllers();
 
 app.MapGet("/api/health", () => new { status = "healthy", timestamp = DateTime.UtcNow })
     .WithName("HealthCheck")
-    .WithOpenApi()
     .Produces<HealthCheckResponse>();
 
 app.MapGet("/api/info", () => new { 
@@ -45,8 +44,7 @@ app.MapGet("/api/info", () => new {
     version = "1.0.0",
     hostname = System.Net.Dns.GetHostName()
 })
-    .WithName("AppInfo")
-    .WithOpenApi();
+    .WithName("AppInfo");
 
 app.Run();
 
