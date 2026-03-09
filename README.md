@@ -6,7 +6,7 @@ A comprehensive 5-day hands-on Docker training program designed for Software Qua
 
 ### **Day 1: Docker Basics**
 *Foundations and first container*
-- [Day 1 README](Day1_Docker_Basics/README.md)
+- [Day 1 README](Docker_Training_Lab_Practices/Day1_Docker_Basics/README.md)
 - **Topics**: Images, containers, registry, Docker lifecycle
 - **Project**: Simple ASP.NET Core Web API
 - **Skills**: Build images, run containers, manage container lifecycle
@@ -14,7 +14,7 @@ A comprehensive 5-day hands-on Docker training program designed for Software Qua
 
 ### **Day 2: Docker Images**
 *Building and optimizing images*
-- [Day 2 README](Day2_Docker_Images/README.md)
+- [Day 2 README](Docker_Training_Lab_Practices/Day2_Docker_Images/README.md)
 - **Topics**: Multi-stage builds, Alpine Linux, image optimization, security
 - **Project**: Compare full framework vs optimized images
 - **Skills**: Image tagging, layer optimization, health checks
@@ -22,7 +22,7 @@ A comprehensive 5-day hands-on Docker training program designed for Software Qua
 
 ### **Day 3: Docker Networking**
 *Inter-container communication*
-- [Day 3 README](Day3_Docker_Networking/README.md)
+- [Day 3 README](Docker_Training_Lab_Practices/Day3_Docker_Networking/README.md)
 - **Topics**: Bridge networks, DNS, service discovery, port mapping
 - **Project**: Multi-container network communication
 - **Skills**: Create networks, inter-container communication, debugging
@@ -30,7 +30,7 @@ A comprehensive 5-day hands-on Docker training program designed for Software Qua
 
 ### **Day 4: Docker Volumes**
 *Data persistence and storage*
-- [Day 4 README](Day4_Docker_Volumes/README.md)
+- [Day 4 README](Docker_Training_Lab_Practices/Day4_Docker_Volumes/README.md)
 - **Topics**: Named volumes, bind mounts, tmpfs, backup/restore
 - **Project**: Data persistence across container restarts
 - **Skills**: Volume management, backups, permissions
@@ -38,7 +38,7 @@ A comprehensive 5-day hands-on Docker training program designed for Software Qua
 
 ### **Day 5: Docker Compose**
 *Multi-container orchestration*
-- [Day 5 README](Day5_Docker_Compose/README.md)
+- [Day 5 README](Docker_Training_Lab_Practices/Day5_Docker_Compose/README.md)
 - **Topics**: Service composition, dependencies, production configs
 - **Project**: Web API + PostgreSQL + Redis + Nginx stack
 - **Skills**: Docker Compose, multi-service debugging, scaling
@@ -94,6 +94,8 @@ dotnet --version
 ---
 
 ## 🚀 Quick Start
+
+This `README.md` is in the root `Docker/` folder; training labs are in `Docker_Training_Lab_Practices/`.
 
 ### Clone or Navigate to Training Directory
 ```bash
@@ -460,46 +462,47 @@ Each day can be validated through:
 ## 📄 File Structure
 
 ```
-Docker_Training_Lab_Practices/
-├── Day1_Docker_Basics/
-│   ├── Program.cs
-│   ├── Dockerfile
-│   ├── .dockerignore
-│   ├── Day1_Docker_Basics.csproj
-│   └── README.md
-├── Day2_Docker_Images/
-│   ├── Program.cs
-│   ├── Dockerfile
-│   ├── Dockerfile.Alpine
-│   ├── .dockerignore
-│   ├── Day2_Docker_Images.csproj
-│   └── README.md
-├── Day3_Docker_Networking/
-│   ├── Program.cs
-│   ├── Dockerfile
-│   ├── .dockerignore
-│   ├── Day3_Docker_Networking.csproj
-│   └── README.md
-├── Day4_Docker_Volumes/
-│   ├── Program.cs
-│   ├── Dockerfile
-│   ├── .dockerignore
-│   ├── Day4_Docker_Volumes.csproj
-│   └── README.md
-├── Day5_Docker_Compose/
-│   ├── Program.cs
-│   ├── Dockerfile.WebAPI
-│   ├── docker-compose.yml
-│   ├── docker-compose.override.yml
-│   ├── docker-compose.prod.yml
-│   ├── init-db.sql
-│   ├── nginx.conf
-│   ├── .dockerignore
-│   ├── .env.example
-│   ├── Day5_WebAPI.csproj
-│   ├── README.md
-│   └── TRAINING_GUIDE.md
-└── README.md (this file)
+Docker/
+├── README.md (this file)
+└── Docker_Training_Lab_Practices/
+    ├── Day1_Docker_Basics/
+    │   ├── Program.cs
+    │   ├── Dockerfile
+    │   ├── .dockerignore
+    │   ├── Day1_Docker_Basics.csproj
+    │   └── README.md
+    ├── Day2_Docker_Images/
+    │   ├── Program.cs
+    │   ├── Dockerfile
+    │   ├── Dockerfile.Alpine
+    │   ├── .dockerignore
+    │   ├── Day2_Docker_Images.csproj
+    │   └── README.md
+    ├── Day3_Docker_Networking/
+    │   ├── Program.cs
+    │   ├── Dockerfile
+    │   ├── .dockerignore
+    │   ├── Day3_Docker_Networking.csproj
+    │   └── README.md
+    ├── Day4_Docker_Volumes/
+    │   ├── Program.cs
+    │   ├── Dockerfile
+    │   ├── .dockerignore
+    │   ├── Day4_Docker_Volumes.csproj
+    │   └── README.md
+    └── Day5_Docker_Compose/
+        ├── Program.cs
+        ├── Dockerfile.WebAPI
+        ├── docker-compose.yml
+        ├── docker-compose.override.yml
+        ├── docker-compose.prod.yml
+        ├── init-db.sql
+        ├── nginx.conf
+        ├── .dockerignore
+        ├── .env.example
+        ├── Day5_WebAPI.csproj
+        ├── README.md
+        └── TRAINING_GUIDE.md
 ```
 
 ---
